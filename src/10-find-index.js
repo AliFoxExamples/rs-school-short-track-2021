@@ -11,8 +11,19 @@
  * For ([1, 2, 3], 2) should return 1
  *
  */
-function findIndex(/* array, value */) {
-  throw new Error('Not implemented');
+function findIndex(array, value) {
+  const halfLength = Math.ceil(array.length / 2);
+
+  function reverseIndex(v) {
+    for (let i = array.length - 1; i >= halfLength; i--) {
+      if (array[i] === v) {
+        return i;
+      }
+    }
+    return 0;
+  }
+
+  return halfLength >= value ? array.indexOf(value) : reverseIndex(value);
 }
 
 module.exports = findIndex;
